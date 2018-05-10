@@ -30,8 +30,8 @@ flags.DEFINE_string("best_checkpoint_dir", "/scratch/cany/best_checkpoint/"+ str
 flags.DEFINE_string("output_dir", "/scratch/cany/result_pics/"+str(gpu)+"/", "Name of output directory (Not used in default)")
 
 flags.DEFINE_boolean("expand", True, "Expand the dataset by rotating and scaling")
-flags.DEFINE_boolean("create_expand_images", False, "Use Matlab to imresize the train images and put them in expanded_images_dir. The rotation and flipping will be done by this code during training")
-flags.DEFINE_string("expand_images_dir", "/scratch/cany/icvl/expanded/set"+str(gpu)+"/train/", "Name of the directory to put the expanded data in")
+flags.DEFINE_boolean("create_expand_images", False, "Use Matlab to imresize the train images and put them in expand_images_dir. The rotation and flipping will be done by this code during training")
+flags.DEFINE_string("expand_images_dir", "/scratch/cany/icvl/expanded/set"+str(gpu)+"/train/", "Name of the directory where expanded images reside")
 flags.DEFINE_string("scrap_dir", "/scratch/cany/icvl/expanded/set"+str(gpu)+"/scrap/", "Name of the directory that expanded validation data resides")
 
 flags.DEFINE_boolean("loadCheckPoint", True, "Load the model from the checkpoint")
@@ -52,6 +52,10 @@ flags.DEFINE_string("vali_log_file", "vali_error_log.txt", "Name of txt file tha
 flags.DEFINE_string("test_log_file", "test_error_log.txt", "Name of txt file that current test loss will be written ")
 
 flags.DEFINE_integer("patch_batch_size", 1280, "How many patches to put in a batch save. This is not the size of batches in training!!!")
+
+# If you face RAM issues in data augmentation you can reduce this number or apply augmentation online during training. The offline approach is chosen to 
+# increase speed
+
 
 flags.DEFINE_string("load_checkpoint_dir", "check", "Name of directory in which checkpoint to load resides ")
 

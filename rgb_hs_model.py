@@ -129,7 +129,7 @@ class spectral_model(object):
     valid_datas = get_valid_data(self)
     test_datas = get_test_data(self)
     n_vali = len(valid_datas)
-    n_test = len(test_datas)
+
     if self.load_checkpoint:
         self.load(self.load_checkpoint_dir)
         
@@ -138,7 +138,7 @@ class spectral_model(object):
 
 
     best_rgb_val_loss = (10000,0)
-    best_rgb_test_loss = (10000,0)
+
     print("Training...")
     start_time = time.time()
 
